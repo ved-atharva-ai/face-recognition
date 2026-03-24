@@ -33,16 +33,36 @@ python deepface/match.py
 
 It verifies `deepface/img1.jpeg` against `deepface/img2.jpeg` and prints the result.
 
-## 4) Run FastAPI Service (Optional)
+## 4) Run Server
+
+Start the API server from project root:
 
 ```bash
+source .venv/bin/activate
 python deepface/fast_api.py
 ```
 
-API endpoints:
+Or run with uvicorn explicitly:
+
+```bash
+source .venv/bin/activate
+uvicorn deepface.fast_api:app --host 0.0.0.0 --port 8000
+```
+
+Server URL:
+
+- `http://localhost:8000`
+
+Main endpoints:
 
 - `GET /health`
 - `POST /match` (accepts base64/data URI images in `img1` and `img2`)
+
+Quick health check:
+
+```bash
+curl http://localhost:8000/health
+```
 
 ## 5) Notes
 
